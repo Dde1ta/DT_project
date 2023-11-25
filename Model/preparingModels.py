@@ -41,7 +41,7 @@ class Models:
     def create_models(self):
         dia,hea,hep = self.load_data()
         dia_x,dia_y = dia[dia.columns[1:-1]].values,dia[dia.columns[-1]].values
-        hea_x,hea_y = hea[hea.columns[1:-1]].values,hea[hea.columns[-1]].values
+        hea_x,hea_y = hea[hea.columns[1:-6]].values,hea[hea.columns[-1]].values
         hep_x,hep_y = hep[hep.columns[1:-1]].values,hep[hep.columns[-1]].values
         scaler = StandardScaler()
         encoder = LabelEncoder()

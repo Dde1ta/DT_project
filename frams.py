@@ -60,104 +60,137 @@ class MainFrame:
         hep_button.place(x=50, y=550, width=200, height=45)
 
     def dia_mode(self):
+        self.check_mode()
         self.mode = "Dia"
-        age_lable = Label(self.perdit_canvas,text = "Age:",font = ("Arial", 15))
-        age_lable.place(x = 30,y=30,width=50,height = 25)
+        self.age_label = Label(self.perdit_canvas,text = "Age:",font = ("Arial", 15))
+        self.age_label.place(x = 30,y=30,width=50,height = 25)
 
-        age_entry = Entry(self.perdit_canvas,font = ("Arial", 15))
-        age_entry.place(x = 100,y = 30,width=100,height = 25)
+        self.age_entry = Entry(self.perdit_canvas,font = ("Arial", 15))
+        self.age_entry.place(x = 100,y = 30,width=100,height = 25)
 
-        np_label = Label(self.perdit_canvas,text = "No of times pregnant:",font = ("Arial",15))
-        np_label.place(x = 30,y=100,width = 195,height = 25)
+        self.np_label = Label(self.perdit_canvas,text = "No of times pregnant:",font = ("Arial",15))
+        self.np_label.place(x = 30,y=100,width = 195,height = 25)
 
-        np_entry = Entry(self.perdit_canvas,font = ("Arial", 15))
-        np_entry.place(x = 250,y = 100,width=100,height = 25)
+        self.np_entry = Entry(self.perdit_canvas,font = ("Arial", 15))
+        self.np_entry.place(x = 250,y = 100,width=100,height = 25)
 
-        pgc_label = Label(self.perdit_canvas, text="Plasma glucose concentration:", font=("Arial", 15))
-        pgc_label.place(x=30, y=170, width=274, height=25)
+        self.pgc_label = Label(self.perdit_canvas, text="Plasma glucose concentration:", font=("Arial", 15))
+        self.pgc_label.place(x=30, y=170, width=274, height=25)
 
-        pgc_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        pgc_entry.place(x=330, y=170, width=100, height=25)
+        self.pgc_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.pgc_entry.place(x=330, y=170, width=100, height=25)
 
-        bmi_label = Label(self.perdit_canvas,text = "Body mass index:", font=("Arial", 15))
-        bmi_label.place(x = 30,y=240,width = 161,height = 25)
+        self.bmi_label = Label(self.perdit_canvas,text = "Body mass index:", font=("Arial", 15))
+        self.bmi_label.place(x = 30,y=240,width = 161,height = 25)
 
-        bmi_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        bmi_entry.place(x=220, y=240, width=100, height=25)
+        self.bmi_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.bmi_entry.place(x=220, y=240, width=100, height=25)
 
-        dpf_label = Label(self.perdit_canvas,text = "Diabetes pedigree function:", font=("Arial", 15))
-        dpf_label.place(x = 30,y=310, width=244, height=25)
+        self.dpf_label = Label(self.perdit_canvas,text = "Diabetes pedigree function:", font=("Arial", 15))
+        self.dpf_label.place(x = 30,y=310, width=244, height=25)
 
-        dpf_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        dpf_entry.place(x = 300, y=310, width=100, height=25)
+        self.dpf_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.dpf_entry.place(x = 300, y=310, width=100, height=25)
 
-        def dist():
-            age_lable.destroy()
-            age_entry.destroy()
+    def dist_dia(self):
+        self.age_label.destroy()
+        self.age_entry.destroy()
 
-            np_label.destroy()
-            np_entry.destroy()
+        self.np_label.destroy()
+        self.np_entry.destroy()
 
-            pgc_label.destroy()
-            pgc_entry.destroy()
+        self.pgc_label.destroy()
+        self.pgc_entry.destroy()
 
-            bmi_label.destroy()
-            bmi_entry.destroy()
+        self.bmi_label.destroy()
+        self.bmi_entry.destroy()
 
-            dpf_label.destroy()
-            dpf_entry.destroy()
+        self.dpf_label.destroy()
+        self.dpf_entry.destroy()
 
     def check_mode(self):
         if self.mode is None:
             pass
         elif self.mode == "Dia":
-            self.dia_mode.dist()
+            self.dist_dia()
+        elif self.mode == "Hea":
+            self.dist_hea()
 
     def hea_mode(self):
-        """
-        fasting blood sugar > 120 mg/dl
-        resting electrocardiographic results
-        maximum heart rate achieved
-        exercise induced angina
-        oldpeak
-        slope of peak
-        number of major vessels
-        thal
-        :return:
-        """
+        self.check_mode()
         self.mode = "Hea"
-        age_lable = Label(self.perdit_canvas, text="Age:", font=("Arial", 15))
-        age_lable.place(x=30, y=30, width=50, height=25)
+        self.age_label = Label(self.perdit_canvas, text="Age:", font=("Arial", 15))
+        self.age_label.place(x=30, y=30, width=50, height=25)
 
-        age_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        age_entry.place(x=100, y=30, width=100, height=25)
+        self.age_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.age_entry.place(x=100, y=30, width=100, height=25)
 
-        sex_label = Label(self.perdit_canvas, text="Sex:", font=("Arial", 15))
-        sex_label.place(x=30, y=100, width=50, height=25)
+        self.sex_label = Label(self.perdit_canvas, text="Sex:", font=("Arial", 15))
+        self.sex_label.place(x=30, y=100, width=50, height=25)
 
-        sex_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        sex_entry.place(x=100, y=100, width=100, height=25)
+        self.sex_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.sex_entry.place(x=100, y=100, width=100, height=25)
 
-        cpt_label = Label(self.perdit_canvas, text="chest pain type:", font=("Arial", 15))
-        cpt_label.place(x=30, y=170, width=274, height=25)
+        self.cpt_label = Label(self.perdit_canvas, text="Chest pain type:", font=("Arial", 15))
+        self.cpt_label.place(x=30, y=170, width=160, height=25)
 
-        cpt_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        cpt_entry.place(x=330, y=170, width=100, height=25)
+        self.cpt_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.cpt_entry.place(x=200, y=170, width=100, height=25)
 
-        rbp_label = Label(self.perdit_canvas, text="resting blood pressure:", font=("Arial", 15))
-        rbp_label.place(x=30, y=240, width=161, height=25)
+        self.rbp_label = Label(self.perdit_canvas, text="Resting blood pressure:", font=("Arial", 15))
+        self.rbp_label.place(x=30, y=240, width=221, height=25)
 
-        rbp_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        rbp_entry.place(x=220, y=240, width=100, height=25)
+        self.rbp_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.rbp_entry.place(x=250, y=240, width=100, height=25)
 
-        c_label = Label(self.perdit_canvas, text="cholestoral:", font=("Arial", 15))
-        c_label.place(x=30, y=310, width=244, height=25)
+        self.c_label = Label(self.perdit_canvas, text="Cholestoral:", font=("Arial", 15))
+        self.c_label.place(x=30, y=310, width=120, height=25)
 
-        c_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        c_entry.place(x=300, y=310, width=100, height=25)
+        self.c_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.c_entry.place(x=170, y=310, width=100, height=25)
 
-        dia_label = Label(self.perdit_canvas,text="diabetes", font=("Arial", 15))
-        dia_label.place(x=30, y=380, width=244, height=25)
+        self.dia_label = Label(self.perdit_canvas,text="Fasting blood sugar:", font=("Arial", 15))
+        self.dia_label.place(x=30, y=380, width=195, height=25)
+
+        self.dia_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.dia_entry.place(x=250, y=380, width=195, height=25)
+
+        self.rer_label = Label(self.perdit_canvas, text="Resting electrocardiographic results:", font=("Arial", 15))
+        self.rer_label.place(x=30, y=450, width=340, height=25)
+
+        self.rer_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.rer_entry.place(x=400, y=450, width=195, height=25)
+
+        self.mhr_label = Label(self.perdit_canvas, text="Maximum heart rate achieved:", font=("Arial", 15))
+        self.mhr_label.place(x=30, y=520, width=290, height=25)
+
+        self.mhr_entry = Entry(self.perdit_canvas, font=("Arial", 15))
+        self.mhr_entry.place(x=350, y=520, width=195, height=25)
+
+    def dist_hea(self):
+        self.age_label.destroy()
+        self.age_entry.destroy()
+
+        self.sex_entry.destroy()
+        self.sex_label.destroy()
+
+        self.cpt_label.destroy()
+        self.cpt_entry.destroy()
+
+        self.rbp_label.destroy()
+        self.rbp_entry.destroy()
+
+        self.c_label.destroy()
+        self.c_entry.destroy()
+
+        self.dia_label.destroy()
+        self.dia_entry.destroy()
+
+        self.rer_entry.destroy()
+        self.rer_label.destroy()
+
+        self.mhr_entry.destroy()
+        self.mhr_label.destroy()
 
 
 if __name__ == "__main__":
