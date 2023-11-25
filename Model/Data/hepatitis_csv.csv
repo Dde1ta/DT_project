@@ -1,4 +1,4 @@
-,age,sex,fatigue,anorexia,spleen_palpable,ascites,varices,bilirubin,alk_phosphate,sgot,albumin,protime,class
+sr,age,sex,fatigue,anorexia,spleen_palpable,ascites,varices,bilirubin,alk_phosphate,sgot,albumin,protime,class
 0,30,0,0.0,0.0,0.0,0.0,0.0,1.0,85.0,18.0,4.0,,0
 1,50,1,1.0,0.0,0.0,0.0,0.0,0.9,135.0,42.0,3.5,,0
 2,78,1,1.0,0.0,0.0,0.0,0.0,0.7,96.0,32.0,4.0,,0
