@@ -15,10 +15,7 @@ class LoadingScreen:
         self.label_increase.place(x = 450,y = 500,width=50,height=20)
         loading_name = Label(self.master,text = "LOADING",font = ("Arial", 65),bg = "black",fg="white")
         loading_name.place(x = 575,y = 250,width=400,height=150)
-        button_start = Button(self.master,text = "Clike me to start loading",
-                                   command=lambda :self.start_increase(10))
-        button_start.place(x = 100,y = 200,width = 50,
-                                   height = 100,)
+        self.start_increase(10)
 
     def increase_to(self,r):
         if r> 600:
@@ -73,6 +70,9 @@ class MainFrame:
             self.per_dia()
         elif self.mode == "Hea":
             self.per_hea()
+
+        elif self.mode == "Hep":
+            self.per_hep()
     def per_dia(self):
         try:
             sample = np.array([
@@ -124,6 +124,35 @@ class MainFrame:
         except:
             self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
             self.error_label.place(x = 400 , y=10,width = 250,height = 25)
+
+    def per_hep(self):
+
+        sample = np.array([
+            float(self.f_entry.get()),
+            float(self.a_entry.get()),
+            float(self.sp_entry.get()),
+            float(self.as_entry.get()),
+            float(self.va_entry.get()),
+            float(self.b_entry.get()),
+            float(self.ap_entry.get()),
+            float(self.sg_entry.get()),
+            float(self.alb_entry.get()),
+            float(self.p_entry.get()),
+        ]).reshape(1, -1)
+
+        result = self.hep_model.predict(sample)[0]
+
+        try:
+            self.error_label.destroy()
+            self.result_label.destroy()
+        except:
+            pass
+
+        self.result_label = Label(self.result_canvas, text=f"The result is {result}", font=("Arial", 25))
+        self.result_label.place(x=450, y=50, width=200, height=30)
+
+            # self.error_label = Label(self.result_canvas, text="Non integer value entered", font=("Arial", 15))
+            # self.error_label.place(x=400, y=10, width=250, height=25)
 
     def check_mode(self):
         try:

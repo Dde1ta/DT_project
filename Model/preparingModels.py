@@ -64,7 +64,7 @@ class Models:
         dump(self.create_models(),dic)
 
     def load_models(self):
-        return load("Model\models\models.joblib")
+        return load("Model\\models\\models.joblib")
 
 if __name__ == "__main__":
     json_file = "options.json"
