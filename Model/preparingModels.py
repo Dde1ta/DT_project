@@ -42,7 +42,7 @@ class Models:
         dia,hea,hep = self.load_data()
         dia_x,dia_y = dia[dia.columns[1:-1]].values,dia[dia.columns[-1]].values
         hea_x,hea_y = hea[hea.columns[1:-6]].values,hea[hea.columns[-1]].values
-        hep_x,hep_y = hep[hep.columns[1:-1]].values,hep[hep.columns[-1]].values
+        hep_x,hep_y = hep[hep.columns[3:-1]].values,hep[hep.columns[-1]].values
         scaler = StandardScaler()
         encoder = LabelEncoder()
         # dia_x = pd.DataFrame(scaler.fit_transform(dia_x))
@@ -64,7 +64,7 @@ class Models:
         dump(self.create_models(),dic)
 
     def load_models(self):
-        return load("models\models.joblib")
+        return load("Model\models\models.joblib")
 
 if __name__ == "__main__":
     json_file = "options.json"
