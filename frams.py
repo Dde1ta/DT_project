@@ -81,7 +81,6 @@ class MainFrame:
                 float(self.bmi_entry.get()),
                 float(self.dpf_entry.get()),
                 float(self.age_entry.get())
-
             ]).reshape(1,-1)
 
             result = self.dia_model.predict(sample)[0]
@@ -91,9 +90,16 @@ class MainFrame:
                 self.result_label.destroy()
             except:
                 pass
+            if result == 1:
+                self.result_label = Label(self.result_canvas, text = f"Sorry you have a 80% chance to have diabetes",
+                                          font = ("Arial", 25))
+                self.result_label.place(x = 200 , y= 20,width = 670, height = 30)
+            else:
+                self.result_label = Label(self.result_canvas, text=f"Congratulations you have a 80% chance to not have diabetes",
+                                          font=("Arial", 25))
+                self.result_label.place(x=200, y=20, width=870, height=30)
 
-            self.result_label = Label(self.result_canvas, text = f"The result is {result}",font = ("Arial", 25))
-            self.result_label.place(x = 450 , y= 50,width = 200, height = 30)
+
         except:
             self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
             self.error_label.place(x = 400 , y=10,width = 250,height = 25)
@@ -148,8 +154,15 @@ class MainFrame:
         except:
             pass
 
-        self.result_label = Label(self.result_canvas, text=f"The result is {result}", font=("Arial", 25))
-        self.result_label.place(x=450, y=50, width=200, height=30)
+        if result == 1:
+            self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have Heart disease",
+                                      font=("Arial", 25))
+            self.result_label.place(x=200, y=20, width=670, height=30)
+        else:
+            self.result_label = Label(self.result_canvas,
+                                      text=f"Congratulations you have a 80% chance to not have Heart disease",
+                                      font=("Arial", 25))
+            self.result_label.place(x=200, y=20, width=870, height=30)
 
             # self.error_label = Label(self.result_canvas, text="Non integer value entered", font=("Arial", 15))
             # self.error_label.place(x=400, y=10, width=250, height=25)
