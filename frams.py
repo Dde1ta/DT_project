@@ -96,13 +96,13 @@ class MainFrame:
             if result == 1:
                 self.result_label = Label(self.result_canvas, text = f"Sorry you have a 80% chance to have diabetes",
                                           font = ("Arial", 25))
-                print("Yes")
+
                 self.result_label.place(x = 200 , y= 20,width = 670, height = 30)
             else:
                 self.result_label = Label(self.result_canvas, text=f"Congratulations you have a 80% chance to not have diabetes",
                                           font=("Arial", 25))
                 self.result_label.place(x=200, y=20, width=870, height=30)
-                print("NO")
+
 
 
         except:
@@ -135,14 +135,14 @@ class MainFrame:
         if result == 1:
             self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have Heart attack",
                                       font=("Arial", 25))
-            print("Yes")
-            self.result_label.place(x=200, y=20, width=690, height=30)
+
+            self.result_label.place(x=200, y=20, width=730, height=30)
         else:
             self.result_label = Label(self.result_canvas,
                                       text=f"Congratulations you have a 80% chance to not have Heart attack",
                                       font=("Arial", 25))
-            print("NO")
-            self.result_label.place(x=200, y=20, width=870, height=30)
+
+            self.result_label.place(x=180, y=20, width=990, height=35)
         # except:
         #     self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
         #     self.error_label.place(x = 400 , y=10,width = 250,height = 25)
@@ -176,13 +176,13 @@ class MainFrame:
             if result == 1:
                 self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have hepatitis",
                                           font=("Arial", 25))
-                print("Yes")
+
                 self.result_label.place(x=200, y=20, width=670, height=30)
             else:
                 self.result_label = Label(self.result_canvas,
                                           text=f"Congratulations you have a 80% chance to not have hepatitis",
                                           font=("Arial", 25))
-                print("NO")
+
                 self.result_label.place(x=200, y=20, width=870, height=30)
 
                 # self.error_label = Label(self.result_canvas, text="Non integer value entered", font=("Arial", 15))

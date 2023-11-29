@@ -30,13 +30,13 @@ class Models:
         print("Loaded_data")
         return [dia_data,heart_data,hep_data]
 
-    # def into_train_test(self,data_list):
-    #     l = []
-    #     for data in data_list:
-    #         train, test = np.split(df.sample(frac=1), [int(0.8 * len(data))])
-    #         l.append([train,test])
-    #     print("split_data")
-    #     return l
+    def into_train_test(self,data_list):
+        l = []
+        for data in data_list:
+            train, test = np.split(df.sample(frac=1), [int(0.8 * len(data))])
+            l.append([train,test])
+        print("split_data")
+        return l
 
     def create_models(self):
         dia,hea,hep = self.load_data()
