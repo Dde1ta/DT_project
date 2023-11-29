@@ -110,60 +110,18 @@ class MainFrame:
             self.error_label.place(x = 400 , y=10,width = 250,height = 25)
 
     def per_hea(self):
-        try:
-            sample = np.array([
-                float(self.age_entry.get()),
-                float(self.g_entry.get()),
-                float(self.cpt_entry.get()),
-                float(self.rbp_entry.get()),
-                float(self.c_entry.get()),
-                float(self.dia_entry.get()),
-                float(self.rer_entry.get()),
-                float(self.mhr_entry.get()),
-            ]).reshape(1,-1)
-
-            result = self.hea_model.predict(sample)[0]
-
-            try:
-                self.error_label.destroy()
-                self.result_label.destroy()
-            except:
-                try:
-                    self.result_label.destroy()
-                except:
-                    pass
-
-            if result == 1:
-                self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have Heart attack",
-                                          font=("Arial", 25))
-                print("Yes")
-                self.result_label.place(x=200, y=20, width=670, height=30)
-            else:
-                self.result_label = Label(self.result_canvas,
-                                          text=f"Congratulations you have a 80% chance to not have Heart attack",
-                                          font=("Arial", 25))
-                print("NO")
-                self.result_label.place(x=200, y=20, width=870, height=30)
-        except:
-            self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
-            self.error_label.place(x = 400 , y=10,width = 250,height = 25)
-
-    def per_hep(self):
 
         sample = np.array([
-            float(self.f_entry.get()),
-            float(self.a_entry.get()),
-            float(self.sp_entry.get()),
-            float(self.as_entry.get()),
-            float(self.va_entry.get()),
-            float(self.b_entry.get()),
-            float(self.ap_entry.get()),
-            float(self.sg_entry.get()),
-            float(self.alb_entry.get()),
-            float(self.p_entry.get()),
-        ]).reshape(1, -1)
+            float(self.age_entry.get()),
+            float(self.g_entry.get()),
+            float(self.cpt_entry.get()),
+            float(self.rbp_entry.get()),
+            float(self.c_entry.get()),
+            float(self.rer_entry.get()),
+            float(self.mhr_entry.get()),
+        ]).reshape(1,-1)
 
-        result = self.hep_model.predict(sample)[0]
+        result = self.hea_model.predict(sample)[0]
 
         try:
             self.error_label.destroy()
@@ -175,20 +133,63 @@ class MainFrame:
                 pass
 
         if result == 1:
-            self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have hepatitis",
+            self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have Heart attack",
                                       font=("Arial", 25))
             print("Yes")
-            self.result_label.place(x=200, y=20, width=670, height=30)
+            self.result_label.place(x=200, y=20, width=690, height=30)
         else:
             self.result_label = Label(self.result_canvas,
-                                      text=f"Congratulations you have a 80% chance to not have hepatitis",
+                                      text=f"Congratulations you have a 80% chance to not have Heart attack",
                                       font=("Arial", 25))
             print("NO")
             self.result_label.place(x=200, y=20, width=870, height=30)
+        # except:
+        #     self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
+        #     self.error_label.place(x = 400 , y=10,width = 250,height = 25)
 
-            # self.error_label = Label(self.result_canvas, text="Non integer value entered", font=("Arial", 15))
-            # self.error_label.place(x=400, y=10, width=250, height=25)
+    def per_hep(self):
+        try:
+            sample = np.array([
+                float(self.f_entry.get()),
+                float(self.a_entry.get()),
+                float(self.sp_entry.get()),
+                float(self.as_entry.get()),
+                float(self.va_entry.get()),
+                float(self.b_entry.get()),
+                float(self.ap_entry.get()),
+                float(self.sg_entry.get()),
+                float(self.alb_entry.get()),
+                float(self.p_entry.get()),
+            ]).reshape(1, -1)
 
+            result = self.hep_model.predict(sample)[0]
+
+            try:
+                self.error_label.destroy()
+                self.result_label.destroy()
+            except:
+                try:
+                    self.result_label.destroy()
+                except:
+                    pass
+
+            if result == 1:
+                self.result_label = Label(self.result_canvas, text=f"Sorry you have a 80% chance to have hepatitis",
+                                          font=("Arial", 25))
+                print("Yes")
+                self.result_label.place(x=200, y=20, width=670, height=30)
+            else:
+                self.result_label = Label(self.result_canvas,
+                                          text=f"Congratulations you have a 80% chance to not have hepatitis",
+                                          font=("Arial", 25))
+                print("NO")
+                self.result_label.place(x=200, y=20, width=870, height=30)
+
+                # self.error_label = Label(self.result_canvas, text="Non integer value entered", font=("Arial", 15))
+                # self.error_label.place(x=400, y=10, width=250, height=25)
+        except:
+            self.error_label = Label(self.result_canvas,text = "Non integer value entered",font = ("Arial",15))
+            self.error_label.place(x = 400 , y=10,width = 250,height = 25)
     def check_mode(self):
         try:
             self.error_label.destroy()
@@ -289,23 +290,17 @@ class MainFrame:
         self.c_entry = Entry(self.perdit_canvas, font=("Arial", 15))
         self.c_entry.place(x=170, y=310, width=100, height=25)
 
-        self.dia_label = Label(self.perdit_canvas,text="Fasting blood sugar:", font=("Arial", 15))
-        self.dia_label.place(x=30, y=380, width=195, height=25)
-
-        self.dia_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        self.dia_entry.place(x=250, y=380, width=195, height=25)
-
         self.rer_label = Label(self.perdit_canvas, text="Resting electrocardiographic results:", font=("Arial", 15))
-        self.rer_label.place(x=30, y=450, width=340, height=25)
+        self.rer_label.place(x=30, y=380, width=340, height=25)
 
         self.rer_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        self.rer_entry.place(x=400, y=450, width=195, height=25)
+        self.rer_entry.place(x=400, y=380, width=195, height=25)
 
         self.mhr_label = Label(self.perdit_canvas, text="Maximum heart rate achieved:", font=("Arial", 15))
-        self.mhr_label.place(x=30, y=520, width=290, height=25)
+        self.mhr_label.place(x=30, y=450, width=290, height=25)
 
         self.mhr_entry = Entry(self.perdit_canvas, font=("Arial", 15))
-        self.mhr_entry.place(x=350, y=520, width=195, height=25)
+        self.mhr_entry.place(x=350, y=450, width=195, height=25)
 
     def dist_hea(self):
         self.age_label.destroy()
@@ -322,9 +317,6 @@ class MainFrame:
 
         self.c_label.destroy()
         self.c_entry.destroy()
-
-        self.dia_label.destroy()
-        self.dia_entry.destroy()
 
         self.rer_entry.destroy()
         self.rer_label.destroy()

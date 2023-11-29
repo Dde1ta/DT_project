@@ -25,6 +25,7 @@ class Models:
         hep_data = pd.read_csv("Data/hepatitis_csv.csv")
         dia_data = dia_data.dropna()
         heart_data = heart_data.dropna()
+        heart_data = heart_data.drop(["fasting blood sugar > 120 mg/dl "],axis = 1)
         hep_data = hep_data.dropna()
         print("Loaded_data")
         return [dia_data,heart_data,hep_data]
