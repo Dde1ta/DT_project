@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler,LabelEncoder
-from sklearn.metrics import classification_report
 import json as j
 from joblib import load,dump
 
@@ -30,24 +29,20 @@ class Models:
         print("Loaded_data")
         return [dia_data,heart_data,hep_data]
 
-    def into_train_test(self,data_list):
-        l = []
-        for data in data_list:
-            train, test = np.split(df.sample(frac=1), [int(0.8 * len(data))])
-            l.append([train,test])
-        print("split_data")
-        return l
+    # def into_train_test(self,data_list):
+    #     l = []
+    #     for data in data_list:
+    #         train, test = np.split(df.sample(frac=1), [int(0.8 * len(data))])
+    #         l.append([train,test])
+    #     print("split_data")
+    #     return l
 
     def create_models(self):
         dia,hea,hep = self.load_data()
         dia_x,dia_y = dia[dia.columns[1:-1]].values,dia[dia.columns[-1]].values
         hea_x,hea_y = hea[hea.columns[1:-6]].values,hea[hea.columns[-1]].values
         hep_x,hep_y = hep[hep.columns[3:-1]].values,hep[hep.columns[-1]].values
-        scaler = StandardScaler()
-        encoder = LabelEncoder()
-        # dia_x = pd.DataFrame(scaler.fit_transform(dia_x))
-        # hea_x = pd.DataFrame(scaler.fit_transform(hea_x))
-        # hep_x = pd.DataFrame(scaler.fit_transform(hep_x))
+
         dia_m = LogisticRegression(max_iter=1000)
         hea_m = LogisticRegression(max_iter=1000)
         hep_m = LogisticRegression(max_iter=1000)
